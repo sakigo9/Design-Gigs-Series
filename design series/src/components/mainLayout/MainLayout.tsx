@@ -1,13 +1,14 @@
-import React,{FC, ReactElement} from 'react'
+import React,{FC, ReactElement, ReactNode} from 'react'
 import styled from "styled-components"
 import LayoutHeader from '../layoutHeader';
 import SideBar from '../sideBar';
 
 interface mainLayoutProps{
-    leftWidth:number;
-    rightWidth:number;
+    leftWidth:string;
+    rightWidth:string;
     sideBarSection:ReactElement;
     mainBodySection:ReactElement;
+    children:ReactNode;
 }
 
 const MainLayoutWrapper=styled.div`
@@ -21,15 +22,17 @@ const MainLayoutWrapper=styled.div`
 
 const RightSideLayout=styled.div`
    display: flex;
-   justify-content: flex-end;
+   flex-direction: column;
+   align-items: flex-end;
 `;
 
-const MainLayout:FC<mainLayoutProps> = ({leftWidth,rightWidth,sideBarSection,mainBodySection}) => {
+const MainLayout:FC<mainLayoutProps> = ({leftWidth,rightWidth,sideBarSection,mainBodySection,children}) => {
   return (
     <MainLayoutWrapper>
-        <SideBar leftSideWidth='12vw'/>
+        <SideBar leftSideWidth={leftWidth}/>
         <RightSideLayout>
-            <LayoutHeader left="12vw"/>
+            <LayoutHeader left={leftWidth} right={rightWidth}/>
+            {children}
         </RightSideLayout>
     </MainLayoutWrapper>
   )

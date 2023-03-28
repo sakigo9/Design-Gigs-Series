@@ -1,8 +1,10 @@
 import { FC, useState } from "react";
-import BookIcon from "../../assets/bookAnima/BookAnimation.json";
 import styled from "styled-components";
 import AnimationIcons from "../animationIcons";
+import {useNavigate} from 'react-router-dom';
 import DashboardCustomizeIcon from "@mui/icons-material/DashboardCustomize";
+import CustomIcon from "../customIcon";
+import BookMark from "../../assets/BookMark.png"
 
 interface sideBarProps {
   leftSideWidth?: string;
@@ -12,6 +14,7 @@ interface sideBarData {
   title: string;
   value: number;
   active: boolean;
+  path:string;
 }
 const SideBarWrapper = styled.div<{ leftSideWidth: string }>`
   top: 0;
@@ -44,7 +47,7 @@ const SideBarEpisode = styled.div<{active:boolean;}>`
   gap: 5px;
   width: 10vw;
   &:hover {
-    color: rgb(202, 94, 237);
+    color: rgb(220, 163, 239);
   }
 `;
 
@@ -54,42 +57,63 @@ const SideBarContent = styled.div`
   margin-top: 20px;
   margin-bottom: 20px;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
 `;
 
 const SideBar: FC<sideBarProps> = ({ leftSideWidth = "30vw" }) => {
-  const episodeData: sideBarData[] = [
+  const navigation=useNavigate();
+  const data: sideBarData[] = [
     {
       title: "Home",
       value: 0,
       active: true,
+      path:"/"
     },
     {
       title: "Episode",
       value: 1,
       active: false,
+      path:"/episode1"
     },
     {
       title: "Episode",
       value: 2,
       active: false,
+      path:"/episode2"
     },
   ];
+  const [episodeData,setEpisodeData]=useState(data);
+
+  const handleActiveEpisode=(currIndex:number)=>{
+    let local=[...episodeData];
+    local.map((episode,index)=>{
+      if(currIndex===index){
+        local[currIndex].active=true;
+        let currPath=episode.path;
+        navigation(currPath);
+      }else{
+        local[index].active=false
+      }
+    })
+    setEpisodeData(local);
+  }
   return (
     <SideBarWrapper leftSideWidth={leftSideWidth}>
-      <AnimationIcons icon={BookIcon} height="100px" width="100px" />
+      <img src={BookMark} alt="BookMark" style={{height:"100px",width:"100px"}}/>
       <SideBarContent>
         {episodeData.map((item, index) => {
           return (
-            <SideBarEpisode key={index} active={item.active}>
-              <div>{item.title}</div>
+            <SideBarEpisode key={index} active={item.active} onClick={()=>handleActiveEpisode(index)}>
               <div>
                 {item.value === 0 ? (
                   <DashboardCustomizeIcon />
                 ) : (
-                  <DashboardCustomizeIcon />
+                  <CustomIcon active={item.active}>
+                    {item.value}
+                  </CustomIcon>
                 )}
               </div>
+              <div>{item.title}</div>
             </SideBarEpisode>
           );
         })}

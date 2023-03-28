@@ -5,12 +5,13 @@ import Avatar from "../../assets/authorIcon/AuthorIcon.json";
 import AnimationIcons from "../animationIcons";
 interface headerProps {
   left: string;
+  right:string;
 }
 
 const HeaderWrapper = styled.div<headerProps>`
   display: flex;
   justify-content: space-between;
-  width: 85%;
+  width: ${p=>p.right};
   margin: 10px;
   float: right;
   /* left: 50%; */
@@ -27,9 +28,9 @@ const HeroTitle = styled.div`
   letter-spacing: 1px;
 `;
 
-const LayoutHeader: FC<headerProps> = ({ left }) => {
+const LayoutHeader: FC<headerProps> = ({ left,right }) => {
   return (
-    <HeaderWrapper left={left}>
+    <HeaderWrapper left={left} right={right}>
       <div style={{ display: "flex", alignItems: "center" }}>
         <AnimationIcons
           icon={HeroIcon}
