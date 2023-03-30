@@ -3,7 +3,10 @@
 
 ## Steps to start the application
 
-1. Clone the repo - [Repo](https://github.com/sakigo9/Design-Gigs-Series)
+1. Clone the repo - 
+  <a href="https://github.com/sakigo9/Design-Gigs-Series/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=sakigo9/Design-Gigs-Series" />
+  </a>
 2. Install packages using - `yarn`
 3. Start the server.
     * `yarn dev run` for connecting to dev server.
