@@ -10,9 +10,9 @@ export const MainBodyWrapper = styled.div<{right:string;}>`
   height: 85vh;
   border-radius: 6px;
   margin: 10px;
-  display:flex;
-  justify-content: center;
-  align-items: center;
+  /* display:flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
   padding: 10px 15px;
   width: ${p=>p.right};
   overflow-y: auto;
