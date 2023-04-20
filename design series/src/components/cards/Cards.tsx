@@ -44,7 +44,7 @@ const CardDescriptions=styled.div`
       display: flex;
       text-align: center;
 `;
-const Cards:FC<cardsProps>=({width="300px",height="500px",image,title,description})=>{
+const Cards:FC<cardsProps>=({width="300px",height="450px",image,title,description})=>{
    return <CardsContainers>
         <CardBody width={width} height={height}>
            <img src={image} alt='Cards' style={{height:"200px",width:"100%",objectFit:"cover"}}/>
