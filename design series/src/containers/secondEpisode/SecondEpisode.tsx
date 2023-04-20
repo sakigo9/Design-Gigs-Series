@@ -11,8 +11,11 @@ interface props {
 
 const SecondEpisode: FC<props> = ({ secondWidth }) => {
   return <MainBodyWrapper right={secondWidth}>
-     <EpisodeTitle title={"Episode 2: Music Cards"} icon={<SignpostIcon style={{color:"#0e0e23"}}/>}/>
-     <Cards image={MusicImage}/>
+     <EpisodeTitle title={"Episode 2: Card UI"} icon={<SignpostIcon style={{color:"#0e0e23"}}/>}/>
+     <Cards 
+          image={MusicImage} 
+          title="Benefits of listening music" 
+          description="Music is a fundamental aspect of human culture. It has the power to bring joy, stimulate memories, create connections and inspire creativity.Listening to fast or slow motivational music enhances running performance.Music can help you learn and recall information better, but it depends on how much you like the music and whether or not you’re a musician."/>
   </MainBodyWrapper>;
 };
 

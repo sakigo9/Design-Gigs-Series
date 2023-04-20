@@ -103,7 +103,7 @@ const SideBar: FC<sideBarProps> = ({ leftSideWidth = "30vw" }) => {
       <SideBarContent>
         {episodeData.map((item, index) => {
           return (
-            <SideBarEpisode key={index} active={item.active} onClick={()=>handleActiveEpisode(index)}>
+            <SideBarEpisode key={index} active={item.path===window.location.pathname} onClick={()=>handleActiveEpisode(index)}>
               <div>
                 {item.value === 0 ? (
                   <DashboardCustomizeIcon />
